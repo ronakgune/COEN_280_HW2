@@ -1,0 +1,11 @@
+select BUSINESS_ID, count(BUSINESS_ID) as NumberOfOccurances
+from reviews
+WHERE AUTHOR IN
+(SELECT Y.YELP_ID FROM YELP_USER Y
+WHERE Y.FRIENDLIST IS NOT NULL)
+group by BUSINESS_ID  
+ORDER BY NumberOfOccurances DESC;
+
+
+
+
